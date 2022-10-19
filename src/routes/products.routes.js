@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.use(express.json());
 
-router.get('/:id', produtos.todosOsProdutos);
+router.get('/:id', produtos.pegarPeloID);
 
-router.get('/', produtos.pegarPeloID);
+router.get('/', produtos.todosOsProdutos);
 
 // router.get('/', (_req, res) => {
 //   const [result] = connection.execute('SELECT * FROM StoreManager.products');

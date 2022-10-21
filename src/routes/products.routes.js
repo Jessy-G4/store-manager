@@ -1,5 +1,6 @@
 const express = require('express');
 const produtos = require('../controllers/products.controller');
+const validador = require('../middlewares/middlewares');
 // const connection = require('../connection');
 
 const router = express.Router();
@@ -10,7 +11,7 @@ router.get('/:id', produtos.pegarPeloID);
 
 router.get('/', produtos.todosOsProdutos);
 
-router.post('/', produtos.adicionarProdutos);
+router.post('/', validador.validaNomeDoProduto, produtos.adicionarProdutos);
 
 // router.post('/', async (req, res) => {
 //   const sql = 'INSERT INTO StoreManager.products (name) VALUES (?)';

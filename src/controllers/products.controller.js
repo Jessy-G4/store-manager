@@ -18,7 +18,19 @@ const pegarPeloID = async (req, res) => {
   });
 };
 
+const adicionarProdutos = async (req, res) => {
+  const { name } = req.body;
+  const resposta = await produtos.adicionandoProduto(name);
+  if (resposta) {
+    return res.status(201).send(resposta);
+  }
+  res.status(404).send({
+    message: 'Produto não criado',
+  });
+};
+
 module.exports = {
   todosOsProdutos,
   pegarPeloID,
+  adicionarProdutos,
 };

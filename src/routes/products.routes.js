@@ -10,9 +10,12 @@ router.get('/:id', produtos.pegarPeloID);
 
 router.get('/', produtos.todosOsProdutos);
 
-// router.get('/', (_req, res) => {
-//   const [result] = connection.execute('SELECT * FROM StoreManager.products');
-//   res.status(200).json(result);
-// }); duvida
+router.post('/', produtos.adicionarProdutos);
+
+// router.post('/', async (req, res) => {
+//   const sql = 'INSERT INTO StoreManager.products (name) VALUES (?)';
+//   const [result] = await connection.execute(sql, [req.body.name]);
+//   res.status(201).json(result);
+// }); 
 
 module.exports = router;

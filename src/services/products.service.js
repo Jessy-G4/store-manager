@@ -10,7 +10,15 @@ const pegarTudo = async () => {
   return tudo;
 };
 
+const adicionandoProduto = async (produto) => {
+  const insertId = await produtos.InserirNovoProduto(produto);
+  const [[newProduct]] = await produtos.PegarPeloID(insertId);
+  console.log(newProduct);
+  return newProduct;
+};
+
 module.exports = {
   pegarID,
   pegarTudo,
+  adicionandoProduto,
 };

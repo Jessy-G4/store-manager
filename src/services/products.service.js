@@ -26,10 +26,16 @@ const vendasID = async (id) => {
   return response;
 };
 
+const atualizandoProdutoById = async (produto) => {
+  await produtos.AtualizandoId(produto);
+  return produto;
+};
+
 module.exports = {
   pegarID,
   pegarTudo,
   adicionandoProduto,
   pegarTodasAsVendas,
   vendasID,
+  atualizandoProdutoById,
 };

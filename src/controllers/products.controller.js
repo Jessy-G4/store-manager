@@ -43,10 +43,20 @@ const vendaID = async (req, res) => {
   res.status(200).json(resposta);
 };
 
+const atualizandoProduto = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const resposta = await produtos.atualizandoProdutoById({ id, name });
+  const resultado = await produtos.pegarID(id);
+  if (!resultado) return res.status(404).json({ message: 'Product not found' });
+  return res.status(200).json(resposta);
+};
+
 module.exports = {
   todosOsProdutos,
   pegarPeloID,
   adicionarProdutos,
   pegarTodaVenda,
   vendaID,
+  atualizandoProduto,
 };

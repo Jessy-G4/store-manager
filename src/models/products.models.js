@@ -39,10 +39,20 @@ const VendasPeloId = async (id) => {
   return result;
 };
 
+const AtualizandoId = async (product) => {
+  const query = `
+    UPDATE StoreManager.products
+    SET name = ?
+    WHERE id = ?
+  `;
+  await connection.execute(query, [product.name, product.id]);
+};
+
 module.exports = {
  PegarTodosOsProdutos,
  PegarPeloID,
  InserirNovoProduto,
  TodasAsVendas,
  VendasPeloId,
+ AtualizandoId,
 };

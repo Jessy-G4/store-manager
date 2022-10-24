@@ -13,6 +13,8 @@ router.get('/', produtos.todosOsProdutos);
 
 router.post('/', validador.validaNomeDoProduto, produtos.adicionarProdutos);
 
+router.put('/:id', validador.validaNomeDoProduto, produtos.atualizandoProduto);
+
 // router.post('/', async (req, res) => {
 //   const sql = 'INSERT INTO StoreManager.products (name) VALUES (?)';
 //   const [result] = await connection.execute(sql, [req.body.name]);

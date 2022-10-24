@@ -48,11 +48,17 @@ const AtualizandoId = async (product) => {
   await connection.execute(query, [product.name, product.id]);
 };
 
+const deleteId = async (id) => {
+  const query = 'DELETE FROM StoreManager.products WHERE id = ?';
+  await connection.execute(query, [id]);
+};
+
 module.exports = {
  PegarTodosOsProdutos,
  PegarPeloID,
  InserirNovoProduto,
  TodasAsVendas,
  VendasPeloId,
- AtualizandoId,
+  AtualizandoId,
+ deleteId,
 };

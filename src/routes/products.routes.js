@@ -15,6 +15,8 @@ router.post('/', validador.validaNomeDoProduto, produtos.adicionarProdutos);
 
 router.put('/:id', validador.validaNomeDoProduto, produtos.atualizandoProduto);
 
+router.delete('/:id', produtos.deleteProduct);
+
 // router.post('/', async (req, res) => {
 //   const sql = 'INSERT INTO StoreManager.products (name) VALUES (?)';
 //   const [result] = await connection.execute(sql, [req.body.name]);

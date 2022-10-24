@@ -31,6 +31,11 @@ const atualizandoProdutoById = async (produto) => {
   return produto;
 };
 
+const deleteProductById = async (id) => {
+  await produtos.deleteId(id);
+  return undefined;
+};
+
 module.exports = {
   pegarID,
   pegarTudo,
@@ -38,4 +43,5 @@ module.exports = {
   pegarTodasAsVendas,
   vendasID,
   atualizandoProdutoById,
+  deleteProductById,
 };

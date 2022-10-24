@@ -52,6 +52,14 @@ const atualizandoProduto = async (req, res) => {
   return res.status(200).json(resposta);
 };
 
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const result = await produtos.pegarID(id);
+  if (!result) return res.status(404).json({ message: 'Product not found' });
+  const resposta = await produtos.deleteProductById(id);
+  return res.status(204).json(resposta);
+};
+
 module.exports = {
   todosOsProdutos,
   pegarPeloID,
@@ -59,4 +67,5 @@ module.exports = {
   pegarTodaVenda,
   vendaID,
   atualizandoProduto,
+  deleteProduct,
 };

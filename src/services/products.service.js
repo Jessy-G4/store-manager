@@ -13,12 +13,23 @@ const pegarTudo = async () => {
 const adicionandoProduto = async (produto) => {
   const insertId = await produtos.InserirNovoProduto(produto);
   const [[newProduct]] = await produtos.PegarPeloID(insertId);
-  console.log(newProduct);
   return newProduct;
+};
+
+const pegarTodasAsVendas = async () => {
+  const response = await produtos.TodasAsVendas();
+  return response;
+};
+
+const vendasID = async (id) => {
+  const response = await produtos.VendasPeloId(id);
+  return response;
 };
 
 module.exports = {
   pegarID,
   pegarTudo,
   adicionandoProduto,
+  pegarTodasAsVendas,
+  vendasID,
 };

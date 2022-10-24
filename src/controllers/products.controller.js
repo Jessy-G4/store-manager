@@ -29,8 +29,24 @@ const adicionarProdutos = async (req, res) => {
   });
 };
 
+const pegarTodaVenda = async (_req, res) => {
+  const resposta = await produtos.pegarTodasAsVendas();
+  return res.status(200).json(resposta);
+};
+
+const vendaID = async (req, res) => {
+  const { id } = req.params;
+  const resposta = await produtos.vendasID(id);
+  if (resposta.length === 0) {
+    return res.status(404).send({ message: 'Sale not found' });
+  }
+  res.status(200).json(resposta);
+};
+
 module.exports = {
   todosOsProdutos,
   pegarPeloID,
   adicionarProdutos,
+  pegarTodaVenda,
+  vendaID,
 };

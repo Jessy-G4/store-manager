@@ -6,7 +6,7 @@ const productsModel = require('../../../src/models/products.models');
 const { products, idProduct } = require('../../mocks/mock');
 
 describe('first', () => {
-  test('se retorna todos os produtos', async function () {
+  it('se retorna todos os produtos', async function () {
     const output = [
       {
         "id": 1,
@@ -29,7 +29,7 @@ describe('first', () => {
     expect(result).to.deep.equal(output);
 
   })
-  test('se retorna um produto', async function () {
+  it('se retorna um produto', async function () {
     const output = {
       id: 1,
       name: 'Martelo de Thor',
@@ -39,27 +39,27 @@ describe('first', () => {
     const result = await productsModel.PegarPeloID(1);
     expect(result).to.deep.equal(output);
   })
-  test('se retorna um novo produto', async function () {
+  it('se retorna um novo produto', async function () {
     const output = {
       id: 5,
-      name: 'jessy teste',
+      name: 'jessy ite',
     }
     sinon.stub(connection, "execute")
       .onFirstCall()
       .resolves([{ insertId: 5 }])
       .onSecondCall()
       .resolves([[output]]);
-    const result = await productsModel.InserirNovoProduto("jessy teste");
+    const result = await productsModel.InserirNovoProduto("jessy ite");
     expect(result).to.be.equal(output);
   });
-  test('se atualiza um produto', async function () {
+  it('se atualiza um produto', async function () {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
 
     const result = await productsModel.AtualizandoId({name:'jessy', id:1});
 
     expect(result).to.equal(undefined);
   });
-  test('se apaga um produto', async function () {
+  it('se apaga um produto', async function () {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
 
     const result = await productsModel.deleteId(1);

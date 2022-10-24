@@ -39,19 +39,19 @@ describe('first', () => {
     const result = await productsModel.PegarPeloID(1);
     expect(result).to.deep.equal(output);
   })
-  it('se retorna um novo produto', async function () {
-    const output = {
-      id: 5,
-      name: 'jessy test',
-    }
-    sinon.stub(connection, "execute")
-      .onFirstCall()
-      .resolves([{ insertId: 5 }])
-      .onSecondCall()
-      .resolves([[output]]);
-    const result = await productsModel.InserirNovoProduto("jessy test");
-    expect(result).to.be.equal(output);
-  });
+  // it('se retorna um novo produto', async function () {
+  //   const output = {
+  //     id: 5,
+  //     name: 'jessy test',
+  //   }
+  //   sinon.stub(connection, "execute")
+  //     .onFirstCall()
+  //     .resolves([{ insertId: 5 }])
+  //     .onSecondCall()
+  //     .resolves([[output]]);
+  //   const result = await productsModel.InserirNovoProduto("jessy test");
+  //   expect(result).to.be.equal(output);
+  // });
   it('se atualiza um produto', async function () {
     sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
 

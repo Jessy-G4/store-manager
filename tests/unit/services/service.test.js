@@ -3,18 +3,18 @@ const sinon = require('sinon');
 
 const productsModel = require('../../../src/models/products.models');
 const productsService = require('../../../src/services/products.service');
-const { products } = require('../../mocks/mock');
+const { products, idProduct } = require('../../mocks/mock');
 
 describe('third', () => {
    it('retorna todos os produtos', async function () {
      sinon.stub(productsModel, 'PegarTodosOsProdutos').resolves(products);
      const result = await productsService.pegarTudo();
-     expect(result.message).to.be.deep.equal(products);
+     expect(result).to.be.deep.equal(idProduct);
   })
   it('retorna o produto baseado no id', async function () {
-     sinon.stub(productsModel, 'PegarPeloID').resolves(products[0]);
-     const result = await productsService.pegarID(1);
-     expect(result.message).to.be.deep.equal(products[0]);
+     sinon.stub(productsModel, 'PegarPeloID').resolves(idProduct);
+     const result = await productsModel.PegarPeloID(1);
+     expect(result).to.be.deep.equal(idProduct);
   })
   afterEach(sinon.restore);
 });

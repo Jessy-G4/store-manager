@@ -22,7 +22,7 @@ describe('first', () => {
       }
     ];
 
-    sinon.stub(connection, 'execute').resolves([products]);
+    sinon.stub(connection, 'execute').resolves(products);
 
     const result = await productsModel.PegarTodosOsProdutos();
 
@@ -34,7 +34,7 @@ describe('first', () => {
       id: 1,
       name: 'Martelo de Thor',
     }
-    sinon.stub(connection, 'execute').resolves([idProduct]);
+    sinon.stub(connection, 'execute').resolves(idProduct);
 
     const result = await productsModel.PegarPeloID(1);
     expect(result).to.deep.equal(output);
@@ -42,14 +42,14 @@ describe('first', () => {
   it('se retorna um novo produto', async function () {
     const output = {
       id: 5,
-      name: 'jessy ite',
+      name: 'jessy test',
     }
     sinon.stub(connection, "execute")
       .onFirstCall()
       .resolves([{ insertId: 5 }])
       .onSecondCall()
       .resolves([[output]]);
-    const result = await productsModel.InserirNovoProduto("jessy ite");
+    const result = await productsModel.InserirNovoProduto("jessy test");
     expect(result).to.be.equal(output);
   });
   it('se atualiza um produto', async function () {

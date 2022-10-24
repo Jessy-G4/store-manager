@@ -1,9 +1,9 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 
-const connection = require('../src/connection');
-const productsModel = require('../src/models/products.models');
-const { products, idProduct } = require('./mocks/mock');
+const connection = require('../../../src/connection');
+const productsModel = require('../../../src/models/products.models');
+const { products, idProduct } = require('../../mocks/mock');
 
 describe('first', () => {
   test('se retorna todos os produtos', async function () {
